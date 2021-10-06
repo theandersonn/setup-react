@@ -21,25 +21,31 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        }
+        use: 'babel-loader'
       },
       {
         test: /\.css?$/,
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader' },
-        ]
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.less$/,
+        use: ['style-loader', 'css-loader', {
+          loader: 'less-loader',
+          options: {
+            lessOptions: {
+              javascriptEnabled: true,
+            },
+          },
+        },]
       },
       {
         test: /\.scss$/,
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader' },
-          { loader: 'sass-loader' }
-        ]
+        use: ['style-loader', 'css-loader', 'sass-loader']
       },
+      {
+        test: /\.(png|j?g|svg|gif)?$/,
+        use: 'file-loader'
+      }
     ]
   }
 };
