@@ -47,5 +47,6 @@ module.exports = {
         use: 'file-loader'
       }
     ]
-  }
+  },
+  devtool: isDevelopment ? 'source-map' : 'inline-source-maps',
 };
